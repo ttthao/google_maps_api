@@ -11,7 +11,7 @@ var result_id
 googleMapsClient.placesNearby({
     location: [32.7089, -117.1560], // Red Door
     radius: 50
-}, function(err, response){
+}, function(err, response) {
     if(!err) {
         var results = response.json.results
 
@@ -19,11 +19,9 @@ googleMapsClient.placesNearby({
         for (var i = 0; i < results.length; i++) {
             var result = results[i]
             var result_name = result['name']
-            // var result_vicinity = result['vicinity'] // I think it would
-                                                        // make more sense to
-                                                        // query vicinity,
-                                                        // b/c it's synonymous 
-                                                        // with address
+            // I think it would make more sense to query vicinity since
+            // it's synonymous to address
+            // var result_vicinity = result['vicinity']
 
             if(result_name == 'Red Door Interactive') {
                 result_id = result['place_id']
@@ -31,6 +29,17 @@ googleMapsClient.placesNearby({
                 break
             }
         }
+
+        googleMapsClient.place({
+            placeid: result_id
+        }, function (err, response) {
+            if (!err) {
+                console.log(response.json.result)
+            } else {
+                console.log(err)
+            }
+        })
+
     } else {
         console.log(err)
     }
