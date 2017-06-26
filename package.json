@@ -1,0 +1,15 @@
+{
+  "name": "places",
+  "version": "1.0.0",
+  "description": "Google Places test appplication",
+  "main": "test.js",
+  "dependencies": {
+    "@google/maps": "^0.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Tommy Truong",
+  "license": "ISC"
+}
